@@ -1,0 +1,53 @@
+#library {
+  padding: 50px;
+  background-image: url("https://images.unsplash.com/photo-1506968430777-bf7784a87f23?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-auto-rows: 1fr;
+  gap: 50px;
+}
+
+.book-card {
+  background-color: #ffffffcc;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.book-cover-details {
+  line-height: 1.7em;
+}
+
+.book-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.book-pages {
+  align-self: end;
+
+  margin: 1lh 0;
+  font-style: italic;
+}
+
+.book-status {
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.read {
+  background-color: #8c2f20dd;
+}
+
+.not-read {
+  background-color: #817f5a;
+}
