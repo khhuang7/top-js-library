@@ -1,11 +1,47 @@
-#library {
+* {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+#table {
   padding: 50px;
   background-image: url("https://images.unsplash.com/photo-1506968430777-bf7784a87f23?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  
+
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
+  grid-template-rows: auto 1fr;
+}
+
+#library {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, clamp(200px, 20%, 300px));
   grid-auto-rows: 1fr;
   gap: 50px;
+}
+
+#new-book-btn {
+  right: 50%;
+  top: 10px;
+  justify-self: center;
+
+  appearance: none;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  border: none;
+  background-color: #102820;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#new-book-btn:hover {
+  opacity: 0.9;
+}
+
+#new-book-btn,
+.book-status {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .book-card {
@@ -40,8 +76,6 @@
   border-radius: 15px;
   font-size: 0.8em;
   color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 .read {
