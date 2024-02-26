@@ -3,7 +3,7 @@
 }
 
 #table {
-  padding: 50px;
+  padding: 25px 50px 50px;
   background-image: url("https://images.unsplash.com/photo-1506968430777-bf7784a87f23?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 
   display: grid;
@@ -18,31 +18,37 @@
   gap: 50px;
 }
 
-#new-book-btn {
-  right: 50%;
-  top: 10px;
-  justify-self: center;
-
+button {
   appearance: none;
-  padding: 10px 30px;
-  margin-bottom: 10px;
+  padding: 15px 40px;
   border-radius: 15px;
   border: none;
   background-color: #102820;
+  box-shadow: inset 0px 0px 20px #cccccc80;
   color: white;
-  font-size: 1.5em;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
 }
 
-#new-book-btn:hover {
+
+button:hover {
   opacity: 0.9;
 }
 
-#new-book-btn,
+button,
 .book-status {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+#new-book-btn {
+  justify-self: center;
+  margin-bottom: 25px;
+
+  font-size: 1.5em;
+}
+
 
 .book-card {
   background-color: #ffffffcc;
@@ -84,4 +90,67 @@
 
 .not-read {
   background-color: #817f5a;
+}
+
+#new-book-form {
+  box-sizing: border-box;
+  padding: 50px;
+  width: max(50%, 300px);
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 15px;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.form-container > label {
+  justify-self: end;
+  margin-bottom: 3px;
+}
+
+input[type="text"],
+input[type="tel"] {
+  box-sizing: border-box;
+  width: 100%;
+  font-family: inherit;
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+  justify-self: start;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+  .form-container > label {
+    grid-column: 1 / -1;
+  }
+  
+  input[type="text"],
+  input[type="tel"] {
+    grid-column: 1 / -1;
+  }
+
+  .form-container > label {
+    justify-self: start;
+  }
+
+  label[for="read-status"] {
+    grid-column: 1;
+  }
+
+  #read-status {
+    justify-self: start;
+  }
+}
+
+#new-book-form button {
+  grid-column: 1 / -1;
+  justify-self: center;
 }
