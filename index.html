@@ -12,22 +12,23 @@
     <div id="library"></div>
   </div>
 
-  <form id="new-book-form" action="" class="closed">
+  <form id="new-book-form" action="">
     <div class="form-container">
       <label for="title">Title:</label>
-      <input id="title" type="text" name="title" required>
+      <input id="title" type="text" name="title" placeholder=" " required>
 
       <label for="author">Author:</label>
-      <input id="author" type="text" name="author" required>
+      <input id="author" type="text" name="author" placeholder=" " required>
 
       <label for="pages">Number of pages:</label>
-      <input id="pages" type="tel" name="pages" required>
+      <input id="pages" type="number" name="pages" placeholder=" "
+        pattern=[0-9]{1,9} required>
 
       <label for="read-status">Have you read this book?</label>
-      <input id="read-status" type="checkbox" name="status" required>
+      <input id="read-status" type="checkbox" name="status">
     </div>
     <div class="form-button">
-      <button>Add book</button>
+      <button id="add-book-btn">Add book</button>
     </div>
   </form>
 

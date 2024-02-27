@@ -18,7 +18,6 @@ function displayBooks() {
   const library = document.getElementById("library");
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i];
-    let bookStatus = 
 
     card = document.createElement("div");
     card.setAttribute("class", "book-card");
@@ -34,18 +33,36 @@ function displayBooks() {
   }
 }
 
+// Slide form in and out
+
 const newBookForm = document.getElementById("new-book-form");
 
 function slideNewBookDrawer() {
-  if (newBookForm.classList.contains("closed")) {
-    newBookForm.classList = "open";
-  } else {
-    newBookForm.classList = "closed";
-  }
+  newBookForm.classList.toggle("open");
 }
 
 const newBookBtn = document.getElementById("new-book-btn");
 
 newBookBtn.addEventListener("click", slideNewBookDrawer);
 
+// Add new books using the form
+const form = document.forms["new-book-form"];
+
+function processForm() {
+  form.reportValidity();
+  var title = form.title.value;
+  var author = form.author.value;
+  var pages = form.pages.value;
+  var read = form.status.checked;
+  addBookToLibrary(title, author, pages, read);
+  displayBooks();
+}
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  processForm();
+});
+
 displayBooks();
+
+// TO DO: Only add one book at a time when displaying
