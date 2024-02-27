@@ -181,7 +181,10 @@ input:placeholder-shown {
 }
 
 .form-button {
-  text-align: center;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* TO DO:

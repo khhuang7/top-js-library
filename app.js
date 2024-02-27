@@ -36,6 +36,9 @@ function slideNewBookDrawer() {
 const newBookBtn = document.getElementById("new-book-btn");
 newBookBtn.addEventListener("click", slideNewBookDrawer);
 
+const cancelBtn = document.getElementById("cancel-btn");
+cancelBtn.addEventListener("click", slideNewBookDrawer);
+
 // Add new books using the form
 const form = document.forms["new-book-form"];
 
