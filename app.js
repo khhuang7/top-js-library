@@ -7,6 +7,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// Tester books, maintained for demo purposes
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
+addBookToLibrary("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 216, false);
+
 function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(new Book(title, author, pages, read));
   let card = document.createElement("div");
@@ -16,7 +20,7 @@ function addBookToLibrary(title, author, pages, read) {
       by
       <div class="book-author">${author}</div>
     </div>
-    <div class="book-pages">${pages} pages</div>
+    <div class="book-pages">${parseInt(pages)} pages</div>
     <div class="row">
       <div class="book-status ${(read === true) ? "read" : "not-read"}">${(read === true) ? "Completed" : "Not read yet"}</div>
       <button class="remove">
@@ -29,13 +33,7 @@ function addBookToLibrary(title, author, pages, read) {
   removeBtn.addEventListener("click", removeBookFromLibrary);
 
   let readDiv = card.querySelector(".book-status");
-  readDiv.addEventListener("click", changeReadStatus);
-  // console.log(myLibrary);
-}
-
-// Tester books, to be deleted later
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
-addBookToLibrary("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 216, false);
+  readDiv.addEventListener("click", changeReadStatus);}
 
 // Slide form in and out
 const newBookForm = document.getElementById("new-book-form");
@@ -80,13 +78,6 @@ function findIndexOfBook(element) {
   let pages = card.querySelector(".book-pages").innerHTML.split(" ")[0];
   let readStatus = card.querySelector(".book-status").textContent.trim();
   let read = (readStatus === "Completed")
-  // for (i = 0; i < myLibrary.length; i++) {
-  //   let book = myLibrary[i];
-  //   console.log(book.title === title);
-  //   console.log(book.author === author);
-  //   console.log(book.pages == pages);
-  //   console.log(book.read === read);
-  // }
   
   let index = myLibrary.findIndex(
     (book) => book.title === title &&
@@ -100,15 +91,12 @@ function findIndexOfBook(element) {
 
 function removeBookFromLibrary() {
   let index = findIndexOfBook(this);
-  // console.log(index);
-  // console.log(myLibrary[index]);
   myLibrary.splice(index, 1);
-  // console.log(myLibrary);
   this.closest(".book-card").remove();
 }
 
 // Toggle read status of individual books
-function changeReadStatus(element) {
+function changeReadStatus() {
   let book = myLibrary[findIndexOfBook(this)];
   book.changeRead();
 
