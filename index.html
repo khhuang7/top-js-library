@@ -7,30 +7,29 @@
   <title>Library</title>
 </head>
 <body>
-    <div id="table">
-      <button id="new-book-btn">Add a new book</button>
-      <div id="library"></div>
+  <div id="table">
+    <button id="new-book-btn">Add a new book</button>
+    <div id="library"></div>
+  </div>
+
+  <form id="new-book-form" action="" class="closed">
+    <div class="form-container">
+      <label for="title">Title:</label>
+      <input id="title" type="text" name="title" required>
+
+      <label for="author">Author:</label>
+      <input id="author" type="text" name="author" required>
+
+      <label for="pages">Number of pages:</label>
+      <input id="pages" type="tel" name="pages" required>
+
+      <label for="read-status">Have you read this book?</label>
+      <input id="read-status" type="checkbox" name="status" required>
     </div>
-
-    <form id="new-book-form" action="">
-      <div class="form-container">
-        <label for="title">Title:</label>
-        <input id="title" type="text" name="title" required>
-
-        <label for="author">Author:</label>
-        <input id="author" type="text" name="author" required>
-
-        <label for="pages">Number of pages:</label>
-        <input id="pages" type="tel" name="pages" required>
-
-        <label for="read-status">Have you read this book?</label>
-        <input id="read-status" type="checkbox" name="status" required>
-
-        <button>Add book</button>
-
-      </div>
-
-    </form>
+    <div class="form-button">
+      <button>Add book</button>
+    </div>
+  </form>
 
   <script src="./app.js"></script>
 </body>

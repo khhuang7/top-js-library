@@ -34,4 +34,18 @@ function displayBooks() {
   }
 }
 
+const newBookForm = document.getElementById("new-book-form");
+
+function slideNewBookDrawer() {
+  if (newBookForm.classList.contains("closed")) {
+    newBookForm.classList = "open";
+  } else {
+    newBookForm.classList = "closed";
+  }
+}
+
+const newBookBtn = document.getElementById("new-book-btn");
+
+newBookBtn.addEventListener("click", slideNewBookDrawer);
+
 displayBooks();
