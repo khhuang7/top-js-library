@@ -109,16 +109,19 @@ function removeBookFromLibrary() {
 
 // Toggle read status of individual books
 function changeReadStatus(element) {
-  // console.log(this);
-  let index = findIndexOfBook(this);
-  // console.log(`Read status before: ${myLibrary[index].read}`);
-  myLibrary[index].read = !(myLibrary[index].read);
-  // console.log(`Read status after: ${myLibrary[index].read}`);
+  let book = myLibrary[findIndexOfBook(this)];
+  book.changeRead();
+
   this.classList.toggle("not-read");
   this.classList.toggle("read");
-  if (myLibrary[index].read) {
+
+  if (book.read) {
     this.textContent = "Completed";
   } else {
     this.textContent = "Not read yet";
   }
+}
+
+Book.prototype.changeRead = function() {
+  this.read = !(this.read);
 }
