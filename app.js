@@ -18,16 +18,19 @@ function addBookToLibrary(title, author, pages, read) {
     </div>
     <div class="book-pages">${pages} pages</div>
     <div class="row">
-      <div class="book-status ${(read === true) ? "read" : "not-read"}">
-      ${(read === true) ? "Completed" : "Not read yet"}</div>
+      <div class="book-status ${(read === true) ? "read" : "not-read"}">${(read === true) ? "Completed" : "Not read yet"}</div>
       <button class="remove">
         <i class="fa fa-trash-o" aria-label="remove book"></i>
       </button>
     </div>`;
   library.appendChild(card);
+
   let removeBtn = card.querySelector("button.remove");
   removeBtn.addEventListener("click", removeBookFromLibrary);
-  console.log(myLibrary);
+
+  let readDiv = card.querySelector(".book-status");
+  readDiv.addEventListener("click", changeReadStatus);
+  // console.log(myLibrary);
 }
 
 // Tester books, to be deleted later
@@ -70,21 +73,20 @@ form.addEventListener("submit", function(event) {
 });
 
 // Remove book using button
-
-function removeBookFromLibrary() {
-  let card = this.closest(".book-card");
+function findIndexOfBook(element) {
+  let card = element.closest(".book-card");
   let title = card.querySelector(".book-title").innerHTML;
   let author = card.querySelector(".book-author").innerHTML;
   let pages = card.querySelector(".book-pages").innerHTML.split(" ")[0];
   let readStatus = card.querySelector(".book-status").textContent.trim();
   let read = (readStatus === "Completed")
-  for (i = 0; i < myLibrary.length; i++) {
-    let book = myLibrary[i];
-    console.log(book.title === title);
-    console.log(book.author === author);
-    console.log(book.pages == pages);
-    console.log(book.read === read);
-  }
+  // for (i = 0; i < myLibrary.length; i++) {
+  //   let book = myLibrary[i];
+  //   console.log(book.title === title);
+  //   console.log(book.author === author);
+  //   console.log(book.pages == pages);
+  //   console.log(book.read === read);
+  // }
   
   let index = myLibrary.findIndex(
     (book) => book.title === title &&
@@ -92,9 +94,31 @@ function removeBookFromLibrary() {
       book.pages == pages &&
       book.read === read
   );
-  console.log(index);
-  console.log(myLibrary[index]);
+  return index;
+}
+
+
+function removeBookFromLibrary() {
+  let index = findIndexOfBook(this);
+  // console.log(index);
+  // console.log(myLibrary[index]);
   myLibrary.splice(index, 1);
-  console.log(myLibrary);
+  // console.log(myLibrary);
   this.closest(".book-card").remove();
+}
+
+// Toggle read status of individual books
+function changeReadStatus(element) {
+  // console.log(this);
+  let index = findIndexOfBook(this);
+  // console.log(`Read status before: ${myLibrary[index].read}`);
+  myLibrary[index].read = !(myLibrary[index].read);
+  // console.log(`Read status after: ${myLibrary[index].read}`);
+  this.classList.toggle("not-read");
+  this.classList.toggle("read");
+  if (myLibrary[index].read) {
+    this.textContent = "Completed";
+  } else {
+    this.textContent = "Not read yet";
+  }
 }
