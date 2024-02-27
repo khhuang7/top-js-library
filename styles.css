@@ -18,7 +18,7 @@
   margin: 0;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, clamp(200px, 20%, 300px));
+  grid-template-columns: repeat(auto-fill, clamp(220px, 20%, 300px));
   gap: 50px;
 }
 
@@ -53,6 +53,16 @@ button,
   font-size: 1.5em;
 }
 
+button.remove {
+  padding: 0;
+  background-color: #ffffff00;
+  color: black;
+  font-size: 1.5em;
+}
+
+#cancel-btn {
+  background-color: #333;
+}
 
 .book-card {
   background-color: #ffffffcc;
@@ -78,6 +88,12 @@ button,
 .book-pages {
   margin: 1lh 0;
   font-style: italic;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 15px;
 }
 
 .book-status {

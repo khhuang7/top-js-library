@@ -17,9 +17,17 @@ function addBookToLibrary(title, author, pages, read) {
       <div class="book-author">${author}</div>
     </div>
     <div class="book-pages">${pages} pages</div>
-    <div class="book-status ${(read === true) ? "read" : "not-read"}">
-      ${(read === true) ? "Completed" : "Not read yet"}</div>`;
+    <div class="row">
+      <div class="book-status ${(read === true) ? "read" : "not-read"}">
+      ${(read === true) ? "Completed" : "Not read yet"}</div>
+      <button class="remove">
+        <i class="fa fa-trash-o" aria-label="remove book"></i>
+      </button>
+    </div>`;
   library.appendChild(card);
+  let removeBtn = card.querySelector("button.remove");
+  removeBtn.addEventListener("click", removeBookFromLibrary);
+  console.log(myLibrary);
 }
 
 // Tester books, to be deleted later
@@ -60,3 +68,33 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
   processForm();
 });
+
+// Remove book using button
+
+function removeBookFromLibrary() {
+  let card = this.closest(".book-card");
+  let title = card.querySelector(".book-title").innerHTML;
+  let author = card.querySelector(".book-author").innerHTML;
+  let pages = card.querySelector(".book-pages").innerHTML.split(" ")[0];
+  let readStatus = card.querySelector(".book-status").textContent.trim();
+  let read = (readStatus === "Completed")
+  for (i = 0; i < myLibrary.length; i++) {
+    let book = myLibrary[i];
+    console.log(book.title === title);
+    console.log(book.author === author);
+    console.log(book.pages == pages);
+    console.log(book.read === read);
+  }
+  
+  let index = myLibrary.findIndex(
+    (book) => book.title === title &&
+      book.author === author &&
+      book.pages == pages &&
+      book.read === read
+  );
+  console.log(index);
+  console.log(myLibrary[index]);
+  myLibrary.splice(index, 1);
+  console.log(myLibrary);
+  this.closest(".book-card").remove();
+}
