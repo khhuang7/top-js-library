@@ -87,11 +87,11 @@ button,
   color: white;
 }
 
-.read {
+.not-read {
   background-color: #8c2f20dd;
 }
 
-.not-read {
+.read {
   background-color: #817f5a;
 }
 
