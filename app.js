@@ -1,10 +1,28 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  get pages() {
+    return this._pages;
+  }
+
+  set pages(number) {
+    if (parseInt(number) <= 0) {
+      alert("Number of pages should be greater than zero");
+      throw "Number of pages should be greater than zero";
+    }
+    this._pages = number;
+  }
+
+  changeRead() {
+    this.read = !(this.read);
+  }
 }
 
 // Tester books, maintained for demo purposes
@@ -108,8 +126,4 @@ function changeReadStatus() {
   } else {
     this.textContent = "Not read yet";
   }
-}
-
-Book.prototype.changeRead = function() {
-  this.read = !(this.read);
 }
